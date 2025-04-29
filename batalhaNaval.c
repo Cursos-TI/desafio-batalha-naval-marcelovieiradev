@@ -1,40 +1,45 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+#define SHIP1_LENGTH 4  // Comprimento do navio vertical
+#define SHIP2_LENGTH 3  // Comprimento do navio horizontal
+
+// Estrutura para representar um vetor bidimensional (coordenadas X e Y)
+typedef struct {
+    int x;
+    int y;
+} Vector2;
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    // Declaração dos vetores para guardar as coordenadas de cada parte dos navios
+    Vector2 ship1[SHIP1_LENGTH];  // Navio vertical
+    Vector2 ship2[SHIP2_LENGTH];  // Navio horizontal
 
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+    // Posição inicial (cabeça) do navio vertical
+    Vector2 start1 = {2, 3};  // Exemplo: coluna 2, linha 3
+    // Posiciona o navio verticalmente (incrementa Y)
+    for (int i = 0; i < SHIP1_LENGTH; i++) {
+        ship1[i].x = start1.x;
+        ship1[i].y = start1.y + i;
+    }
 
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+    // Posição inicial (cabeça) do navio horizontal
+    Vector2 start2 = {5, 6};  // Exemplo: coluna 5, linha 6
+    // Posiciona o navio horizontalmente (incrementa X)
+    for (int i = 0; i < SHIP2_LENGTH; i++) {
+        ship2[i].x = start2.x + i;
+        ship2[i].y = start2.y;
+    }
 
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
+    // Exibição das coordenadas no console
+    printf("Coordenadas do navio 1 (vertical):\n");
+    for (int i = 0; i < SHIP1_LENGTH; i++) {
+        printf("Parte %d: (X: %d, Y: %d)\n", i + 1, ship1[i].x, ship1[i].y);
+    }
 
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
+    printf("\nCoordenadas do navio 2 (horizontal):\n");
+    for (int i = 0; i < SHIP2_LENGTH; i++) {
+        printf("Parte %d: (X: %d, Y: %d)\n", i + 1, ship2[i].x, ship2[i].y);
+    }
 
     return 0;
 }
